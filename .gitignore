@@ -44,3 +44,4 @@ terraform.rc
 # JetBrains IDE
 .idea/
 *.iml
+.vercel
