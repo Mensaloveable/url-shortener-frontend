@@ -6,13 +6,13 @@ const UrlList = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  const backend_url = import.meta.env.VITE_BACKEND_BASE_URL;
+
   // Fetch all URLs
   useEffect(() => {
     const fetchUrls = async () => {
       try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_BACKEND_BASE_URL}/urls`
-        );
+        const response = await axios.get(`${backend_url}/urls`);
         setUrls(response.data);
         setLoading(false);
       } catch (err) {
@@ -65,7 +65,7 @@ const UrlList = () => {
                 <td>{url.originalUrl}</td>
                 <td>
                   <a
-                    href={url.shortUrl}
+                    href={`${backend_url}/${url.shortUrl}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:underline"
